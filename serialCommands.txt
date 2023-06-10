@@ -1,0 +1,7 @@
+
+AT+DMOCONNECT (send this first through arduino com monitor 8N1-Both NL and CR)
+AT+DMOSETGROUP=0,145.5250,145.5250,0000,2,0000  (2 is the squelch level 0-8)
+AT+SETFILTER=0,0,0   (experiment with this to reduce noise)
+AT+DMOSETVOLUME=8 (volume 1-8)
+S+145.5250 (returns 0 if there is signal on the frequency)
+
