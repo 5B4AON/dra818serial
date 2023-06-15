@@ -28,16 +28,37 @@ if ser.isOpen():
         serialcmd = "AT+DMOCONNECT\r\n"
         ser.write(serialcmd.encode())
         time.sleep(0.5)
-        numberOfLine = 0
+        response = ser.readline()
+        print("read data: " + str(response.decode()))
 
-        while True:
+        serialcmd = "AT+DMOSETGROUP=0,145.5250,145.5250,0000,2,0000\r\n"
+        ser.write(serialcmd.encode())
+        time.sleep(0.5)
+        response = ser.readline()
+        print("read data: " + str(response.decode()))
 
-            response = ser.readline()
-            print("read data: " + str(response.decode()))
+        serialcmd = "AT+SETFILTER=0,0,0\r\n"
+        ser.write(serialcmd.encode())
+        time.sleep(0.5)
+        response = ser.readline()
+        print("read data: " + str(response.decode()))
 
-            numberOfLine = numberOfLine + 1
-            if (numberOfLine >= 5):
-                break
+        serialcmd = "AT+DMOSETVOLUME=4\r\n"
+        ser.write(serialcmd.encode())
+        time.sleep(0.5)
+        response = ser.readline()
+        print("read data: " + str(response.decode()))
+
+#        numberOfLine = 0
+
+        #while True:
+
+         #   response = ser.readline()
+         #   print("read data: " + str(response.decode()))
+
+         #   numberOfLine = numberOfLine + 1
+         #   if (numberOfLine >= 5):
+         #       break
 
         ser.close()
 
